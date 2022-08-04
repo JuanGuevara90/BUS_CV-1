@@ -1,13 +1,15 @@
 import cv2                # Importar librería de open cv
 import numpy as np        # Importar librería de numpy como un alias de np
-import time
+import time               # Importar librería de tiempo
+
+
 cap = cv2.VideoCapture(0)     #Captura la imagen con la cámara
 
 faceClassif = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
 count=0
 
 while True:              # Ciclo repetitivo hasta que la condición se vuelva verdadero
-    try:    
+    try:
         ret,frame = cap.read()  # Bucle infinito hastan llegar a la instrucción brake
         #imAux = frame.copy()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Se define una nueva variable gray (marco)
