@@ -1,8 +1,9 @@
 import cv2                # Importar librería de open cv
 import numpy as np        # Importar librería de numpy como un alias de np
 import time               # Importar librería de tiempo
+from Registro_pasajeros import main
 
-
+main()
 cap = cv2.VideoCapture(0)     #Captura la imagen con la cámara
 
 faceClassif = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
