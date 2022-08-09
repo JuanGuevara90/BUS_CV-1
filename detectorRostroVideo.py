@@ -36,5 +36,5 @@ while True:              # Ciclo repetitivo hasta que la condición se vuelva ve
         
 
     print(count)
-cap.release()         # Libera la imagen
+cap.release()         # Librera la imagen
 cv2.destroyAllWindows()  # Cierra todas las ventanas del imshow

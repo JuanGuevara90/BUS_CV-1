@@ -38,19 +38,24 @@ def ingresarPasajero(conn):
     
     #Si no existen registro se inserta una fila
     currentDatetime = datetime.datetime.now()
-    print(currentDatetime.strftime("%y-%m-%d %H:%M:%S"))
-    formatDate = currentDatetime.strftime("%y-%m-%d %H:%M:%S")
+    print(currentDatetime.strftime("%y-%m-%d"))
+    formatDate = currentDatetime.strftime("%y-%m-%d")
     #conn.execute("INSERT INTO Registro_Pasajeros (Total_Pasajeros, fecha) VALUES (%s,%s)",(1,formatDate))
-    sql_insert = "INSERT INTO Registro_Pasajeros (Total_Pasajeros, fecha) VALUES ('1','"+formatDate+"')"
+    sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosDia,Total_Pasajeros) VALUES ('"+formatDate+"','1','1')"
     conn.execute(sql_insert)
+    conn.commit()
     
     #Si hay el registro actualizo y sumo uno en el campo Total_Pasajeros
     #nuevo_valor = Total_Pasajeros+1
-    sql_update ="update  Registro_Pasajeros set Total_Pasajeros=Total_pasajeros+1 where id=1"
+    sql_update ="update  Registro_Pasajeros set Total_PasajerosDia=Total_PasajerosDia+1 where Fecha='"+formatDate+"'"
     conn.execute(sql_update)
+    conn.commit()
     
-    #Si hay 
-
+    # Si hay el registro actualizo y resta uno en el campo Total_Pasajeros
+    sql_update1="update  Registro_Pasajeros set Total_PasajerosDia=Total_PasajerosDia-1 where Fecha='"+formatDate+"'"
+    conn.execute(sql_update1)
+    
+   # sql_updatetotal= "update Registro_Pasajeros set Total_PasajerosDia=sql_update-sqlupdate"
 
 def main():
     
@@ -58,9 +63,9 @@ def main():
  
 
     sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS Registro_Pasajeros (
-                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                        Total_Pasajeros integer,
-                                        Fecha TIMESTAMP NOT NULL
+                                        Fecha TIMESTAMP PRIMARY KEY,
+                                        Total_PasajerosDia integer,
+                                        Total_Pasajeros integer NOT NULL
                                     ); """
 
     sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS Bus (
