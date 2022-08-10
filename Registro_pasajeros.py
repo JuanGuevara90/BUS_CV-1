@@ -31,7 +31,9 @@ def create_table(conn, create_table_sql):
     except Error as e:
         print(e)
         
+aforo=70
 def ingresarPasajero(conn):
+    
     #BUscar si hay un registro en la tabla Registro_Pasajeros
     sql_buscar = "select count(*) from Registro_Pasajeros"
     conn.execute(sql_buscar)
@@ -51,15 +53,10 @@ def ingresarPasajero(conn):
     conn.execute(sql_update)
     conn.commit()
     
-    # Si hay el registro actualizo y resta uno en el campo Total_Pasajeros
-    sql_update1="update  Registro_Pasajeros set Total_PasajerosDia=Total_PasajerosDia-1 where Fecha='"+formatDate+"'"
-    conn.execute(sql_update1)
     
-   # sql_updatetotal= "update Registro_Pasajeros set Total_PasajerosDia=sql_update-sqlupdate"
-
 def main():
     
-    database = r"C:\Users\Jessica\Desktop\Face\DB SQLite\faceDatabase.db"
+    database = r"C:\Users\Jessica\Desktop\Face\DB SQLite\faceDatabase2.db"
  
 
     sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS Registro_Pasajeros (
