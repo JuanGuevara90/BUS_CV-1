@@ -15,11 +15,13 @@ def ingresarregistro(conn):
     #Si no existen registro se inserta una fila
     sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros) VALUES ('"+formatDate+"','1','1')"
     conn.execute(sql_insert)
+    conn.commit()
     
 def actualizarregistro(conn):
     #Si hay el registro actualizo y sumo uno en el campo Total_Pasajeros
     sql_update ="update  Registro_Pasajeros set Total_PasajerosActual=Total_PasajerosActual+1 where Fecha='"+formatDate+"'"
     conn.execute(sql_update)
+    conn.commit()
     
 def disponibilidadBus(formatDate,conn):
     sql_query= "select Total_PasajerosActual, aforo from Registro_Pasajeros WHERE Fecha:'"+formatDate+"'"
@@ -30,9 +32,12 @@ def disponibilidadBus(formatDate,conn):
             aforo=i[1]
             
             if (Total_PasajerosActual<aforo):
-                return true
-                return false
-    return false
+                return True
+                return False
+    return False
+
+
+
     
     
     
