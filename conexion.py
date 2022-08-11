@@ -31,39 +31,16 @@ def create_table(conn, create_table_sql):
     except Error as e:
         print(e)
         
-aforo=70
-def ingresarPasajero(conn):
-    
-    #BUscar si hay un registro en la tabla Registro_Pasajeros
-    sql_buscar = "select count(*) from Registro_Pasajeros"
-    conn.execute(sql_buscar)
-    
-    #Si no existen registro se inserta una fila
-    currentDatetime = datetime.datetime.now()
-    print(currentDatetime.strftime("%y-%m-%d"))
-    formatDate = currentDatetime.strftime("%y-%m-%d")
-    #conn.execute("INSERT INTO Registro_Pasajeros (Total_Pasajeros, fecha) VALUES (%s,%s)",(1,formatDate))
-    sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros) VALUES ('"+formatDate+"','1','1')"
-    conn.execute(sql_insert)
-    conn.commit()
-    
-    #Si hay el registro actualizo y sumo uno en el campo Total_Pasajeros
-    #nuevo_valor = Total_Pasajeros+1
-    sql_update ="update  Registro_Pasajeros set Total_PasajerosActual=Total_PasajerosActual+1 where Fecha='"+formatDate+"'"
-    conn.execute(sql_update)
-    conn.commit()
-    
-    
-    
+
     
 def main():
     
-    database = r"C:\Users\Jessica\Desktop\Face\DB SQLite\faceDatabase2.db"
+    database = r"C:\Users\Jessica\Desktop\Face\DB SQLite\faceDatabase3.db"
  
 
     sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS Registro_Pasajeros (
                                         Fecha TIMESTAMP PRIMARY KEY,
-                                        Total_PasajerosActual integer,
+                                        Total_PasajerosDia integer,
                                         Total_Pasajeros integer NOT NULL
                                     ); """
 
@@ -81,7 +58,7 @@ def main():
     if conn is not None:
         # create projects table
         create_table(conn, sql_create_projects_table)
-        ingresarPasajero(conn)
+   
 
         # create tasks table
         create_table(conn, sql_create_tasks_table)
