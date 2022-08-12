@@ -1,7 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 
-database = r"C:\Users\Server\Documents\personal_projects\BUS_CV-1\raspberry\database\faceDatabase3.db"
+database = r"C:\Users\Server\Documents\personal_projects\BUS_CV-1\src\raspberry\database\faceDatabase.db"
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -44,7 +44,7 @@ def main():
 
         sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS Bus (
                                         origen text,
-                                        destino text,
+                                        destino text
                                     );"""
 
         # create a database connection
