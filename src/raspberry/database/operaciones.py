@@ -1,11 +1,6 @@
 from .conexion import create_connection
 from ..utiles.getDateCurrent import getDate_Current
 
-def buscarregistro(conn):
-    #BUscar si hay un registro en la tabla Registro_Pasajeros
-    sql_buscar = "select count(*) from Registro_Pasajeros"
-    conn.execute(sql_buscar)
-
 def ingresarRegistro(conn,formatDate):
     sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_Pasajeros,Total_PasajerosDia,Aforo) VALUES ('"+formatDate+"','1','1','5')"
     conn.execute(sql_insert)
@@ -50,4 +45,3 @@ def existeRegistrosFechaActual(conn,fechaActual):
             return True
         return False
     
-""" print(existeRegistrosFechaActual(conn , fecha)) """
