@@ -1,0 +1,1 @@
+from "./deteccion/detectorRostroVideo.py" import 
