@@ -1,7 +1,7 @@
 import cv2                # Importar librería de open cv
 import numpy as np        # Importar librería de numpy como un alias de np
 import time               # Importar librería de tiempo
-from Registro_pasajeros import main
+#from Registro_pasajeros import main
 
 #main()
 
@@ -32,10 +32,9 @@ def init():
                 if count == 40:     
                     print ("Límite alcanzado")
                 break
-        except:
-            print("error")
+        except Exception as e:
+            print(e)
 
-            
 
         print(count)
     cap.release()         # Librera la imagen

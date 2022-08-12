@@ -1,1 +1,2 @@
-from "./deteccion/detectorRostroVideo.py" import 
+from deteccion.detectorRostroVideo import init
+init()

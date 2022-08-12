@@ -9,6 +9,7 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 PATH_DATABASE = os.environ.get("DATABASE")
+
 database = PATH_DATABASE
 
 def create_connection(db_file):

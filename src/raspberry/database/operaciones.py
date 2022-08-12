@@ -1,10 +1,10 @@
 import datetime 
+from conexion import create_connection
+import raspberry.utiles.getDateCurrent
 
-#Se crea variables
-currentDatetime = datetime.datetime.now()
-print(currentDatetime.strftime("%y-%m-%d"))
-formatDate = currentDatetime.strftime("%y-%m-%d")
-aforo=0
+
+fecha =getDateCurrent.getDate_Current()
+conn = create_connection()
 
 def buscarregistro(conn):
     #BUscar si hay un registro en la tabla Registro_Pasajeros
@@ -36,8 +36,12 @@ def disponibilidadBus(formatDate,conn):
                 return False
     return False
 
+def existeRegistrosFechaActual(conn,fechaActual):
+    sql_query= "select count(*) from Registro_Pasajeros WHERE Fecha:'"+fechaActual+"'"
+    cursor=conn.execute(sql_query)
+    if (cursor.length()!=0):
+        return True
+    return False
+    
 
-
-    
-    
-    
+print(existeRegistrosFechaActual(conn , fecha))
