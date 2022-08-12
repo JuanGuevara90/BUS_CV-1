@@ -5,14 +5,15 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 
-PATH_DATABASE = os.environ.get("DATABASE")
 
-database = PATH_DATABASE
+def create_connection():
+    dotenv_path = join(dirname(__file__), '.env')
+    load_dotenv(dotenv_path)
 
-def create_connection(db_file):
+    PATH_DATABASE = os.environ.get("DATABASE")
+
+    db_file = PATH_DATABASE
     """ create a database connection to the SQLite database
         specified by db_file
     :param db_file: database file
@@ -57,7 +58,7 @@ def main():
                                     );"""
 
         # create a database connection
-        conn = create_connection(database)
+        conn = create_connection()
 
         # create tables
         if conn is not None:
