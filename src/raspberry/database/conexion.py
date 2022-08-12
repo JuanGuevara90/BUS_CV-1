@@ -1,7 +1,15 @@
 import sqlite3
 from sqlite3 import Error
+# settings.py
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
-database = r"C:\Users\Server\Documents\personal_projects\BUS_CV-1\src\raspberry\database\faceDatabase.db"
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+PATH_DATABASE = os.environ.get("DATABASE")
+database = PATH_DATABASE
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
