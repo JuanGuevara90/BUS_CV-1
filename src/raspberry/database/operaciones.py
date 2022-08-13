@@ -1,6 +1,5 @@
 from array import array
 from sqlite3 import Error
-from ..utiles.getDateCurrent import getDate_Current
 
 def getDatosActuales(conn,fechaActual):
     try:
