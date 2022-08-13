@@ -14,7 +14,7 @@ def init(operation):
     
     cap = cv2.VideoCapture(0)
     """ Todo """
-    """ if(operation==OPERACION_INGRESO):
+    """ if( operation == OPERACION_INGRESO ):
         cap = cv2.VideoCapture(0)     #Captura la imagen con la cámara
     else:
         cap = cv2.VideoCapture(1)   """ 
@@ -32,10 +32,10 @@ def init(operation):
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
                 count=count+1     
                 cropped = frame[y:y+h, x:x+w]
-                if(operation==OPERACION_INGRESO):
+                if( operation == OPERACION_INGRESO ):
                     print("Ingreso Pasajero")
                     controladorIngreso()
-                if(operation==OPERACION_SALIDA):
+                if( operation == OPERACION_SALIDA ):
                     print("Salida Pasajero")
                     controladorSalida()
                 #cv2.imshow('CORTE1',cropped)
@@ -44,7 +44,6 @@ def init(operation):
             time.sleep(0.25)       # 
             k= cv2.waitKey(1)
             if k== 27 or count >=40:
-            
                 if count == 40:     
                     print ("Límite alcanzado")
                 break
