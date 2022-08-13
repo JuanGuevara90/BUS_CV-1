@@ -51,17 +51,15 @@ def main():
                                             Total_Pasajeros integer NOT NULL,
                                             Aforo interger
                                         ); """
-
         sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS Bus (
                                         origen text,
                                         destino text
                                     );"""
-
         # create a database connection
         conn = create_connection()
-
         # create tables
         if conn is not None:
+            print("Conexion BD correcta")
             # create projects table
             create_table(conn, sql_create_projects_table)
 
@@ -73,5 +71,3 @@ def main():
     except Error as e:
         print(e)
         
-
-main()

@@ -1,5 +1,5 @@
 from .utiles.getDateCurrent import getDate_Current
-from .database.operaciones import existeRegistrosFechaActual,ingresarRegistro,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft
+from .database.operaciones import existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft
 from .database.conexion import create_connection
 
 def controladorIngreso():
@@ -15,7 +15,7 @@ def controladorIngreso():
             print("Pruerta Bloqueada")
     else:
         """ Enviar al arduino """
-        ingresarRegistro(conn,dateCurrent)
+        ingresarRegistroPasajeros(conn,dateCurrent)
         print("Ingreso al inicio del dia")
 
 def controladorSalida():
@@ -28,9 +28,3 @@ def controladorSalida():
             print("Ingreso un pasajero")
         else:
             print("Enviar al arduino ")
-    else:
-        ingresarRegistro(conn,dateCurrent)
-        print("Ingreso al inicio del dia")
-    
-""" controladorIngreso() """
-""" controladorSalida() """
