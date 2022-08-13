@@ -7,6 +7,7 @@
 * utiles -> getDateCurrent.py / Fecha actual del sistema ; const.py / Operaciones
 * ini.py -> Punto de Inicio del programa
 * controlador.py -> Archivo que maneja la lógica del programa
+* requirements.txt -> Dependencias del proyecto
 ### Lenguajes usados:
 
 * Python v3.6.13
@@ -19,9 +20,9 @@
 
 ### Comandos Raspberry Pi 4
 > **Nota**: Abrir un terminal y ejecutar cada comando / dentro del raspberry/src.
-#### 1. Activar ambiente
+#### 1. Instalar dependencias
 ```bash
-$ source tf/bin/activate
+$ pip install -r requirements.txt
 ```
 #### 2. Ruta del proyecto
 ```bash
