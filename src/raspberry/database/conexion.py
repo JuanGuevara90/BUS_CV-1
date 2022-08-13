@@ -3,20 +3,14 @@ from sqlite3 import Error
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 PATH_DATABASE = os.environ.get("DATABASE")
 
 def create_connection():
-    
-
     db_file = PATH_DATABASE
-    """ create a database connection to the SQLite database
-        specified by db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -26,19 +20,12 @@ def create_connection():
     return conn
 
 def create_table(conn, create_table_sql):
-    """ create a table from the create_table_sql statement
-    :param conn: Connection object
-    :param create_table_sql: a CREATE TABLE statement
-    :return:
-    """
     try:
         c = conn.cursor()
         c.execute(create_table_sql)
     except Error as e:
         print(e)
         print("aeee")
-        
-
     
 def main():
     
@@ -75,14 +62,10 @@ def isSqlite3Db():
     if not os.path.isfile(PATH_DATABASE): return False
     sz = os.path.getsize(PATH_DATABASE)
 
-    # file is empty, give benefit of the doubt that its sqlite
-    # New sqlite3 files created in recent libraries are empty!
     if sz == 0: return True
 
-    # SQLite database file header is 100 bytes
     if sz < 100: return False
     
-    # Validate file header
     with open(PATH_DATABASE, 'rb') as fd: header = fd.read(100)    
 
     return (header[:16] == b'SQLite format 3\x00')    
