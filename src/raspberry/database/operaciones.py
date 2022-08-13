@@ -1,6 +1,7 @@
+from sqlite3 import Error
 from .conexion import create_connection
 from ..utiles.getDateCurrent import getDate_Current
-from sqlite3 import Error
+
 
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:

@@ -1,17 +1,15 @@
 import sqlite3
 from sqlite3 import Error
-# settings.py
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
-
+PATH_DATABASE = os.environ.get("DATABASE")
 
 def create_connection():
-    dotenv_path = join(dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
-
-    PATH_DATABASE = os.environ.get("DATABASE")
+    
 
     db_file = PATH_DATABASE
     """ create a database connection to the SQLite database
@@ -27,7 +25,6 @@ def create_connection():
         print(e)
     return conn
 
-
 def create_table(conn, create_table_sql):
     """ create a table from the create_table_sql statement
     :param conn: Connection object
@@ -39,6 +36,7 @@ def create_table(conn, create_table_sql):
         c.execute(create_table_sql)
     except Error as e:
         print(e)
+        print("aeee")
         
 
     
@@ -66,8 +64,25 @@ def main():
             # create tasks table
             create_table(conn, sql_create_tasks_table)
             print("Ingreso correcto")
+            return conn
         else:
             print("Error! cannot create the database connection.")
     except Error as e:
         print(e)
         
+
+def isSqlite3Db():
+    if not os.path.isfile(PATH_DATABASE): return False
+    sz = os.path.getsize(PATH_DATABASE)
+
+    # file is empty, give benefit of the doubt that its sqlite
+    # New sqlite3 files created in recent libraries are empty!
+    if sz == 0: return True
+
+    # SQLite database file header is 100 bytes
+    if sz < 100: return False
+    
+    # Validate file header
+    with open(PATH_DATABASE, 'rb') as fd: header = fd.read(100)    
+
+    return (header[:16] == b'SQLite format 3\x00')    

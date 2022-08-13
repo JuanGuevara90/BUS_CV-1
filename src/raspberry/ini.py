@@ -1,14 +1,13 @@
 import sys
 from .deteccion.detectorRostroVideo import init
-import sys
 from .utiles.const import OPERACION_INGRESO,OPERACION_SALIDA
 
 if __name__ == "__main__":
     try:
         array = sys.argv
         n = len(sys.argv)
-        if(n==2):
-            if(array[1]==OPERACION_INGRESO or array[1]==OPERACION_SALIDA ):
+        if( n == 2 ):
+            if( array[1] == OPERACION_INGRESO or array[1] == OPERACION_SALIDA ):
                 init(array[1])
             else:
                 print("Ingrese como segundo parametro <ingreso> o <salida>")

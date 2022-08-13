@@ -1,9 +1,12 @@
 from .utiles.getDateCurrent import getDate_Current
 from .database.operaciones import existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft
-from .database.conexion import create_connection
+from .database.conexion import create_connection,main,isSqlite3Db
 
 def controladorIngreso():
-    conn = create_connection()
+    if(isSqlite3Db()): 
+        conn = create_connection()
+    else:
+        conn = main()
     dateCurrent = getDate_Current()
     if(existeRegistrosFechaActual(conn,dateCurrent)):
         if(disponibilidadBus(conn,dateCurrent)):
@@ -19,12 +22,13 @@ def controladorIngreso():
         print("Ingreso al inicio del dia")
 
 def controladorSalida():
-    conn = create_connection()
-    dateCurrent = getDate_Current()
-    if(existeRegistrosFechaActual(conn,dateCurrent)):
-        if(validateLeft(conn,dateCurrent)):
-            actualizarRegistroResta(conn,dateCurrent)
-            """ Actualizar y enviar al arduino"""
-            print("Ingreso un pasajero")
-        else:
-            print("Enviar al arduino ")
+    if(isSqlite3Db()): 
+        conn = create_connection()
+        dateCurrent = getDate_Current()
+        if(existeRegistrosFechaActual(conn,dateCurrent)):
+            if(validateLeft(conn,dateCurrent)):
+                actualizarRegistroResta(conn,dateCurrent)
+                """ Actualizar y enviar al arduino"""
+                print("Ingreso un pasajero")
+            else:
+                print("Enviar al arduino ")

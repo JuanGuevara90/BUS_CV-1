@@ -12,8 +12,13 @@ def init(operation):
     load_dotenv(dotenv_path)
     PATH_CASCADE = os.environ.get("PATH_CASCADE")
     
-    cap = cv2.VideoCapture(0)     #Captura la imagen con la cámara
-    
+    cap = cv2.VideoCapture(0)
+    """ Todo """
+    """ if(operation==OPERACION_INGRESO):
+        cap = cv2.VideoCapture(0)     #Captura la imagen con la cámara
+    else:
+        cap = cv2.VideoCapture(1)   """ 
+        
     faceClassif = cv2.CascadeClassifier(''+PATH_CASCADE)
     count=0
     while True:              # Ciclo repetitivo hasta que la condición se vuelva verdadero
