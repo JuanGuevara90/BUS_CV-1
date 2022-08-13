@@ -17,7 +17,7 @@
 * Pyserial
 * DotEnv
 
-### Comandos Jetson Nano
+### Comandos Raspberry Pi 4
 > **Nota**: Abrir un terminal y ejecutar cada comando / dentro del raspberry/src.
 #### 1. Activar ambiente
 ```bash
