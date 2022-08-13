@@ -1,2 +1,0 @@
-def metodo():
-    print("hola")
