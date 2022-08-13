@@ -3,6 +3,7 @@ from sqlite3 import Error
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+from .operaciones import ingresarRutaBus
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -50,6 +51,7 @@ def main():
 
             # create tasks table
             create_table(conn, sql_create_tasks_table)
+            ingresarRutaBus(conn)
             print("Ingreso correcto")
             return conn
         else:

@@ -1,11 +1,27 @@
 from sqlite3 import Error
-from .conexion import create_connection
 from ..utiles.getDateCurrent import getDate_Current
 
+
+def getDataCurrent(conn,fechaActual):
+    """ Todo """
+    print("Datos actuales")
+    
+
+def getRoutes(conn):
+    """ Todo """
+    print("Datos actuales")
 
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:
         sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_Pasajeros,Total_PasajerosDia,Aforo) VALUES ('"+fechaActual+"','1','1','5')"
+        conn.execute(sql_insert)
+        conn.commit()
+    except Error as e:
+        print(e)
+        
+def ingresarRutaBus(conn):
+    try:
+        sql_insert = "INSERT INTO Bus (origen,destino) VALUES ('Ibarra','Atuntaqui')"
         conn.execute(sql_insert)
         conn.commit()
     except Error as e:
