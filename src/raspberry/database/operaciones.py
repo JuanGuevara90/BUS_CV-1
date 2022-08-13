@@ -1,15 +1,31 @@
+from array import array
 from sqlite3 import Error
 from ..utiles.getDateCurrent import getDate_Current
 
-
-def getDataCurrent(conn,fechaActual):
-    """ Todo """
-    print("Datos actuales")
+def getDatosActuales(conn,fechaActual):
+    try:
+        sql_query= "select Total_Pasajeros,Total_PasajerosDia, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
+        cursor=conn.execute(sql_query)
+        arrayData =[]
+        for i in cursor:
+            arrayData.append(i[0])
+            arrayData.append(i[1])
+            arrayData.append(i[2])
+        return arrayData
+    except Error as e:
+        print(e)
     
-
 def getRoutes(conn):
-    """ Todo """
-    print("Datos actuales")
+    try:
+        sql_query= "select origen,destino from Bus"
+        cursor=conn.execute(sql_query)
+        arrayData =[]
+        for i in cursor:
+            arrayData.append(i[0])
+            arrayData.append(i[1])
+        return arrayData
+    except Error as e:
+        print(e)
 
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:
@@ -56,7 +72,6 @@ def disponibilidadBus(conn,fechaActual):
     except Error as e:
         print(e)
     
-    
 def validateLeft(conn,fechaActual):
     try:
         sql_query= "select Total_Pasajeros, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
@@ -79,4 +94,3 @@ def existeRegistrosFechaActual(conn,fechaActual):
             return False
     except Error as e:
         print(e)
-    

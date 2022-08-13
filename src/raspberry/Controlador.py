@@ -1,5 +1,5 @@
 from .utiles.getDateCurrent import getDate_Current
-from .database.operaciones import existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft
+from .database.operaciones import existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
 from .database.conexion import create_connection,main,isSqlite3Db
 
 def controladorIngreso():
@@ -20,6 +20,8 @@ def controladorIngreso():
         """ Enviar al arduino """
         ingresarRegistroPasajeros(conn,dateCurrent)
         print("Ingreso al inicio del dia")
+    print(getRoutes(conn))
+    print(getDatosActuales(conn,dateCurrent))
 
 def controladorSalida():
     if(isSqlite3Db()): 
