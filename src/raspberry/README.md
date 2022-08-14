@@ -28,7 +28,11 @@ $ pip install -r requirements.txt
 ```bash
 $ cd /home/iw/tensorflow1/models/research/object_detection
 ```
-#### 3. Comando para ejecutar
+#### 3. Comando para ejecutar en caso de ingreso de pasajeros
 ```bash
-$ python -m raspberry.ini      
+$ python -m raspberry.ini ingreso     
+```
+#### 4. Comando para ejecutar en caso de salida de pasajeros
+```bash
+$ python -m raspberry.ini salida    
 ```
