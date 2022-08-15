@@ -1,5 +1,0 @@
-INSERT INTO Registro_Pasajeros (Total_Pasajeros, fecha) VALUES ('2','2022-08-09')
-
-select count(*) from Registro_Pasajeros
-
-update  Registro_Pasajeros set Total_Pasajeros=Total_pasajeros+1 where id=1
