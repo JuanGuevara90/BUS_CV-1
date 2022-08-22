@@ -1,5 +1,4 @@
 import cv2                # Importar librería de open cv
-import numpy as np        # Importar librería de numpy como un alias de np
 import time               # Importar librería de tiempo
 import os
 from dotenv import load_dotenv
