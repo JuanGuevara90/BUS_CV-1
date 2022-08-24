@@ -26,6 +26,7 @@ def controladorIngreso():
         print("Ingreso al inicio del dia")
     print(getRoutes(conn))
     print(getDatosActuales(conn,dateCurrent))
+    conn.close ()
 
 def controladorSalida():
     if( isSqlite3Db() ): 
@@ -41,3 +42,4 @@ def controladorSalida():
                 print("Enviar al arduino ")
     print(getRoutes(conn))
     print(getDatosActuales(conn,dateCurrent))
+    conn.close()
