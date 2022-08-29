@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import serial,os
 import time 
-
-
 from os.path import join, dirname
-=======
 import serial
 import os
->>>>>>> 4770ed4d84fe0df9e32d4e7cd6b1d70bb5eff4e6
 from dotenv import load_dotenv
 from os.path import join, dirname
 

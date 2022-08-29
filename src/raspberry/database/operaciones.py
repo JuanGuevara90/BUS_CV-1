@@ -4,11 +4,10 @@ from sqlite3 import Error
 
 def getDatosActuales(conn,fechaActual):
     try:
-<<<<<<< HEAD
         sql_query= "select Fecha,Total_PasajerosActual,Total_Pasajeros, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
-=======
+
         sql_query= "select Total_PasajerosActual,Total_Pasajeros, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
->>>>>>> 4770ed4d84fe0df9e32d4e7cd6b1d70bb5eff4e6
+
         cursor=conn.execute(sql_query)
         arrayData =[]
         for i in cursor:
@@ -34,11 +33,11 @@ def getRoutes(conn):
 
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:
-<<<<<<< HEAD
+
         sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','5')"
-=======
+
         sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','70')"
->>>>>>> 4770ed4d84fe0df9e32d4e7cd6b1d70bb5eff4e6
+
         conn.execute(sql_insert)
         conn.commit()
     except Error as e:
