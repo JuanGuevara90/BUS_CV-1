@@ -21,6 +21,7 @@ def controladorIngreso():
     else:
         """ Enviar al arduino """
         ingresarRegistroPasajeros( conn , dateCurrent )
+<<<<<<< HEAD
         A="Ingreso al inidio del dia"
         print(A)
     dest=getRoutes(conn)
@@ -33,6 +34,13 @@ def controladorIngreso():
     print(arduin)
     
 
+=======
+        #sendDatabySerial("A")
+        print("Ingreso al inicio del dia")
+    print(getRoutes(conn))
+    print(getDatosActuales(conn,dateCurrent))
+    conn.close ()
+>>>>>>> 4770ed4d84fe0df9e32d4e7cd6b1d70bb5eff4e6
 
 def controladorSalida():
     if( isSqlite3Db() ): 
@@ -47,6 +55,7 @@ def controladorSalida():
                 print(B)               
             else:
                 print("Enviar al arduino ")
+<<<<<<< HEAD
     
     des1=(getRoutes(conn))
     print(des1)
@@ -55,3 +64,8 @@ def controladorSalida():
     arduino(salard)
     print(salard)
 
+=======
+    print(getRoutes(conn))
+    print(getDatosActuales(conn,dateCurrent))
+    conn.close()
+>>>>>>> 4770ed4d84fe0df9e32d4e7cd6b1d70bb5eff4e6
