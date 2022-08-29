@@ -17,14 +17,16 @@ def sendDatabySerial(msg):
 
 
 def arduino (mnsj):
-  arduino = serial.Serial("COM5", 9600)
+  arduino = serial.Serial("COM6", 9600)
   time.sleep(2)
   arduino.write(mnsj.encode("utf-8"))
   arduino.close()
 
+
+
 def ardrecibe():
 
-  hw_sensor = serial.Serial(port='COM4', baudrate=115200, timeout=1, write_timeout=1)
+  hw_sensor = serial.Serial(port='COM6', baudrate=115200, timeout=1, write_timeout=1)
 
   if __name__ == '__main__':
     while True:
