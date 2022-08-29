@@ -1,7 +1,7 @@
 from .utiles.getDateCurrent import getDate_Current
-from .database.operaciones import existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
+from .database.operaciones import Asientosdisponibles, existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
 from .database.conexion import create_connection,main,isSqlite3Db
-from .serial.sendData import sendDatabySerial
+from .serial.sendData import sendDatabySerial,arduino
 
 def controladorIngreso():
     if( isSqlite3Db() ): 
@@ -12,20 +12,27 @@ def controladorIngreso():
     if( existeRegistrosFechaActual( conn , dateCurrent)  ):
         if( disponibilidadBus( conn , dateCurrent ) ):
             actualizarRegistroSuma( conn , dateCurrent )
-            """ Actualizar y enviar al arduino"""
-            #sendDatabySerial("A")
-            print("Ingreso un pasajero")
+            ingreso="Ingeso Pasajeros"
         else:
-            """ Enviar al arduino bloqueado la puerta """
-            #sendDatabySerial("B")
-            print("Puerta Bloqueada")
+            bloqueo="Bloqueo de puerta"
+            print(bloqueo)
+        
+            #print(Bloq)
     else:
         """ Enviar al arduino """
         ingresarRegistroPasajeros( conn , dateCurrent )
-        #sendDatabySerial("A")
-        print("Ingreso al inicio del dia")
-    print(getRoutes(conn))
-    print(getDatosActuales(conn,dateCurrent))
+        A="Ingreso al inidio del dia"
+        print(A)
+    dest=getRoutes(conn)
+    
+    print(dest)
+    Ing=getDatosActuales(conn,dateCurrent)
+    arduin=str(Ing[1])
+    arduino(arduin)
+    
+    print(arduin)
+    
+
 
 def controladorSalida():
     if( isSqlite3Db() ): 
@@ -35,9 +42,16 @@ def controladorSalida():
             if( validateLeft( conn , dateCurrent )):
                 actualizarRegistroResta( conn , dateCurrent )
                 """ Actualizar y enviar al arduino"""
-                #sendDatabySerial("A")
-                print("Ingreso un pasajero")
+                B="Ingreso un pasajersso"
+                
+                print(B)               
             else:
                 print("Enviar al arduino ")
-    print(getRoutes(conn))
-    print(getDatosActuales(conn,dateCurrent))
+    
+    des1=(getRoutes(conn))
+    print(des1)
+    Sal=(getDatosActuales(conn,dateCurrent))
+    salard=str(Sal[1])
+    arduino(salard)
+    print(salard)
+

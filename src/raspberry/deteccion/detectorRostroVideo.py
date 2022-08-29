@@ -26,13 +26,13 @@ def init(operation):
             #imAux = frame.copy()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Se define una nueva variable gray (marco)
             faces = faceClassif.detectMultiScale(gray, 1.3, 5)
-            #cropped = frame.copy()
+            #cropped = frame.copy()p
             for (x,y,w,h) in faces:
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
                 count=count+1     
                 cropped = frame[y:y+h, x:x+w]
                 if( operation == OPERACION_INGRESO ):
-                    print("Ingreso Pasajero")
+                   # print("Ingreso Pasajero")
                     controladorIngreso()
                 if( operation == OPERACION_SALIDA ):
                     print("Salida Pasajero")
@@ -42,8 +42,8 @@ def init(operation):
             #cv2.imshow('GRISS',gray)          #Muentra ventana en gris
             time.sleep(0.25)       # 
             k= cv2.waitKey(1)
-            if k== 27 or count >=40:
-                if count == 40:     
+            if k== 27 or count >=5:
+                if count == 5:     
                     print ("Límite alcanzado")
                 break
         except Exception as e:

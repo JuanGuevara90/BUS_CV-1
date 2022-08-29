@@ -33,7 +33,7 @@ def main():
     try:
         sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS Registro_Pasajeros (
                                             Fecha TIMESTAMP PRIMARY KEY,
-                                            Total_PasajerosDia integer,
+                                            Total_PasajerosActual integer,
                                             Total_Pasajeros integer NOT NULL,
                                             Aforo interger
                                         ); """
