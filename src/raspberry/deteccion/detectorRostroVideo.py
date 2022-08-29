@@ -19,7 +19,7 @@ def init(operation):
         cap = cv2.VideoCapture(1)   """ 
         
     faceClassif = cv2.CascadeClassifier(''+PATH_CASCADE)
-    count=0
+  
     while True:              # Ciclo repetitivo hasta que la condición se vuelva verdadero
         try:
             ret,frame = cap.read()  # Bucle infinito hastan llegar a la instrucción brake
@@ -29,7 +29,7 @@ def init(operation):
             #cropped = frame.copy()p
             for (x,y,w,h) in faces:
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
-                count=count+1     
+                   
                 cropped = frame[y:y+h, x:x+w]
                 if( operation == OPERACION_INGRESO ):
                    # print("Ingreso Pasajero")
@@ -42,9 +42,7 @@ def init(operation):
             #cv2.imshow('GRISS',gray)          #Muentra ventana en gris
             time.sleep(0.25)       # 
             k= cv2.waitKey(1)
-            if k== 27 or count >=5:
-                if count == 5:     
-                    print ("Límite alcanzado")
+            if k== 27:
                 break
         except Exception as e:
             print(e)
