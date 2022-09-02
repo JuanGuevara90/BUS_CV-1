@@ -33,7 +33,6 @@ def controladorIngreso():
     print(arduin)
     
 
-
 def controladorSalida():
     if( isSqlite3Db() ): 
         conn = create_connection()
