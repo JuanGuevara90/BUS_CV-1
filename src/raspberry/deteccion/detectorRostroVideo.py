@@ -19,20 +19,27 @@ def init(operation):
         cap = cv2.VideoCapture(1)   """ 
         
     faceClassif = cv2.CascadeClassifier(''+PATH_CASCADE)
+<<<<<<< HEAD
   
+=======
+>>>>>>> fcb2c6da02f13efad7a6abab15e853683e12a475
     while True:              # Ciclo repetitivo hasta que la condición se vuelva verdadero
         try:
             ret,frame = cap.read()  # Bucle infinito hastan llegar a la instrucción brake
             #imAux = frame.copy()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Se define una nueva variable gray (marco)
             faces = faceClassif.detectMultiScale(gray, 1.3, 5)
-            #cropped = frame.copy()p
+            #cropped = frame.copy()
             for (x,y,w,h) in faces:
+<<<<<<< HEAD
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
                    
+=======
+                cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)   
+>>>>>>> fcb2c6da02f13efad7a6abab15e853683e12a475
                 cropped = frame[y:y+h, x:x+w]
                 if( operation == OPERACION_INGRESO ):
-                   # print("Ingreso Pasajero")
+                    print("Ingreso Pasajero")
                     controladorIngreso()
                 if( operation == OPERACION_SALIDA ):
                     print("Salida Pasajero")
@@ -43,6 +50,10 @@ def init(operation):
             time.sleep(0.25)       # 
             k= cv2.waitKey(1)
             if k== 27:
+<<<<<<< HEAD
+=======
+                
+>>>>>>> fcb2c6da02f13efad7a6abab15e853683e12a475
                 break
         except Exception as e:
             print(e)
