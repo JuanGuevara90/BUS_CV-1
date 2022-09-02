@@ -31,10 +31,6 @@ def controladorIngreso():
     arduino(arduin)
     
     print(arduin)
-<<<<<<< HEAD
-    
-=======
->>>>>>> fcb2c6da02f13efad7a6abab15e853683e12a475
 
 def controladorSalida():
     if( isSqlite3Db() ): 

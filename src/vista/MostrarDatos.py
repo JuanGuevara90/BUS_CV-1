@@ -57,30 +57,35 @@ class Ui_MainWindow(object):
 "background-color: rgb(85, 85, 255);")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(200, 420, 91, 51))
+        self.pushButton_2.setGeometry(QtCore.QRect(220, 420, 91, 51))
         self.pushButton_2.setStyleSheet("font: 75 14pt \"Times New Roman\";\n"
 "background-color: rgb(202, 255, 244);")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(290, 420, 91, 51))
+        self.pushButton_3.setGeometry(QtCore.QRect(310, 420, 91, 51))
         self.pushButton_3.setStyleSheet("font: 75 14pt \"Times New Roman\";\n"
 "background-color: rgb(255, 198, 193);")
         self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(250, 300, 91, 51))
-        self.pushButton_4.setStyleSheet("background-color: rgb(0, 170, 0);")
-        self.pushButton_4.setText("")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(340, 300, 101, 51))
-        self.pushButton_5.setStyleSheet("background-color: rgb(255, 100, 28);\n"
-"")
-        self.pushButton_5.setText("")
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setGeometry(QtCore.QRect(440, 300, 101, 51))
-        self.pushButton_6.setStyleSheet("background-color: rgb(255, 24, 3);")
-        self.pushButton_6.setText("")
+        pasajeros=2
+        if pasajeros>=0 and pasajeros<5:
+                self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+                self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
+                self.pushButton_4.setStyleSheet("background-color: rgb(0, 170, 0);")
+                self.pushButton_4.setText("")
+                self.pushButton_4.setObjectName("pushButton_4")
+        if pasajeros>=5 and pasajeros<10:
+                self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+                self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
+                self.pushButton_4.setStyleSheet("background-color:  rgb(255, 100, 28)")
+                self.pushButton_4.setText("")
+                self.pushButton_4.setObjectName("pushButton_4")
+        if pasajeros>=10 and pasajeros<=15:
+                self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+                self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
+                self.pushButton_4.setStyleSheet("background-color: rgb(255, 24, 3);")
+                self.pushButton_4.setText("")
+                self.pushButton_4.setObjectName("pushButton_4")        
+        
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(50, 10, 151, 141))
         self.label_6.setText("")
@@ -95,7 +100,6 @@ class Ui_MainWindow(object):
         self.label_7.setPixmap(QtGui.QPixmap("../../Desktop/BUS_CV/src/vista/ciele.jpg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
-        self.pushButton_6.setObjectName("pushButton_6")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -122,8 +126,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "APAGAR"))
         self.pushButton_2.setText(_translate("MainWindow", "ON"))
         self.pushButton_3.setText(_translate("MainWindow", "OFF"))
-
-        #self.label_6.setPixmap(QtGui.QPixmap("imgs/UTN.jpg"))       
+     
 
 if __name__ == "__main__":
     import sys
