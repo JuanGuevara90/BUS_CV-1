@@ -5,6 +5,9 @@ from sqlite3 import Error
 def getDatosActuales(conn,fechaActual):
     try:
         sql_query= "select Fecha,Total_PasajerosActual,Total_Pasajeros, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
+
+        sql_query= "select Total_PasajerosActual,Total_Pasajeros, Aforo from Registro_Pasajeros WHERE Fecha='"+fechaActual+"'"
+
         cursor=conn.execute(sql_query)
         arrayData =[]
         for i in cursor:
@@ -30,7 +33,11 @@ def getRoutes(conn):
 
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:
+
         sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','5')"
+
+        sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','70')"
+
         conn.execute(sql_insert)
         conn.commit()
     except Error as e:

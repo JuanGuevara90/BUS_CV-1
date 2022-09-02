@@ -31,8 +31,6 @@ def controladorIngreso():
     arduino(arduin)
     
     print(arduin)
-    
-
 
 def controladorSalida():
     if( isSqlite3Db() ): 
@@ -46,8 +44,7 @@ def controladorSalida():
                 
                 print(B)               
             else:
-                print("Enviar al arduino ")
-    
+                print("Enviar al arduino ")   
     des1=(getRoutes(conn))
     print(des1)
     Sal=(getDatosActuales(conn,dateCurrent))
