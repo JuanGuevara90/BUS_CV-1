@@ -11,6 +11,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+#from raspberry.controlador import controladorEnvioDatos
 
 
 class Ui_MainWindow(object):
@@ -66,20 +67,28 @@ class Ui_MainWindow(object):
         self.pushButton_3.setStyleSheet("font: 75 14pt \"Times New Roman\";\n"
 "background-color: rgb(255, 198, 193);")
         self.pushButton_3.setObjectName("pushButton_3")
-        pasajeros=2
-        if pasajeros>=0 and pasajeros<5:
+        
+       # while ():
+          #      controladorEnvioDatos()
+           #     getdata=[]
+            #    self.textBrowser=str((getdata[1]))
+             #   self.textBrowser_2=str((getdata[2]))
+                
+
+        dato=2
+        if dato>=0 and dato<5:
                 self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
                 self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
                 self.pushButton_4.setStyleSheet("background-color: rgb(0, 170, 0);")
                 self.pushButton_4.setText("")
                 self.pushButton_4.setObjectName("pushButton_4")
-        if pasajeros>=5 and pasajeros<10:
+        if dato>=5 and dato<10:
                 self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
                 self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
                 self.pushButton_4.setStyleSheet("background-color:  rgb(255, 100, 28)")
                 self.pushButton_4.setText("")
                 self.pushButton_4.setObjectName("pushButton_4")
-        if pasajeros>=10 and pasajeros<=15:
+        if dato>=10 and dato<=15:
                 self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
                 self.pushButton_4.setGeometry(QtCore.QRect(220, 300, 180, 51))
                 self.pushButton_4.setStyleSheet("background-color: rgb(255, 24, 3);")
@@ -121,8 +130,8 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "PASAJEROS BUS"))
         self.label_4.setText(_translate("MainWindow", "Estado"))
         self.label_5.setText(_translate("MainWindow", "Puerta"))
-        self.textBrowser.setText(_translate("MainWindow", "    2"))
-        self.textBrowser_2.setText(_translate("MainWindow", "    5"))
+     #   self.textBrowser.setText(_translate("MainWindow", "  " +self.textBrowser))
+      #  self.textBrowser_2.setText(_translate("MainWindow", "  "+self.textBrowser_2))
         self.pushButton.setText(_translate("MainWindow", "APAGAR"))
         self.pushButton_2.setText(_translate("MainWindow", "ON"))
         self.pushButton_3.setText(_translate("MainWindow", "OFF"))

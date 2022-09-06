@@ -25,6 +25,7 @@
 $ pip install -r requirements.txt
 ```
 #### 2. Ruta del proyecto
+#### 2. Ruta del proyecto
 ```bash
 $ cd /home/iw/tensorflow1/models/research/object_detection
 ```

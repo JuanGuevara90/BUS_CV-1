@@ -52,3 +52,10 @@ def controladorSalida():
     arduino(salard)
     print(salard)
 
+def controladorEnvioDatos():
+    if( isSqlite3Db() ): 
+        conn = create_connection()
+        dateCurrent = getDate_Current()
+    getdata=(getDatosActuales(conn,dateCurrent))
+    return getdata
+    

@@ -4,7 +4,8 @@ import os
 from dotenv import load_dotenv
 from os.path import join, dirname
 from ..utiles.const import OPERACION_INGRESO,OPERACION_SALIDA
-from ..controlador import controladorIngreso,controladorSalida
+from ..controlador import controladorIngreso,controladorSalida, controladorEnvioDatos
+from ...vista.MostrarDatos import Ui_MainWindow
 
 def init(operation):
     dotenv_path = join(dirname(__file__), '.env')
@@ -34,9 +35,11 @@ def init(operation):
                 if( operation == OPERACION_INGRESO ):
                     print("Ingreso Pasajero")
                     controladorIngreso()
+                
                 if( operation == OPERACION_SALIDA ):
                     print("Salida Pasajero")
                     controladorSalida()
+                    controladorEnvioDatos()
                 #cv2.imshow('CORTE1',cropped)
             cv2.imshow('frame',frame)         # Muestra una ventana
             #cv2.imshow('GRISS',gray)          #Muentra ventana en gris
