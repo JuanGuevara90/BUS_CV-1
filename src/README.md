@@ -1,4 +1,4 @@
-# Detector de Aves usando Tensor Flow 
+# Detector de Rostros en un Bus
 
 ### Tabla de Contenidos
 

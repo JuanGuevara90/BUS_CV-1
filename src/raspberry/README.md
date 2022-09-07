@@ -37,3 +37,7 @@ $ python -m raspberry.ini ingreso
 ```bash
 $ python -m raspberry.ini salida    
 ```
+#### 5. Comando para ejecutar vista
+```bash
+$ python -m vista.MostrarDatos 
+```
