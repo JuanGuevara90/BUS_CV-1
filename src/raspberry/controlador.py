@@ -51,6 +51,7 @@ def controladorSalida():
     salard=str(Sal[1])
     arduino(salard)
     print(salard)
+    
 
 def controladorDatos():
     datospantalla=[]
@@ -58,5 +59,6 @@ def controladorDatos():
         conn = create_connection()
         dateCurrent = getDate_Current()
         datospantalla=(getDatosActuales(conn,dateCurrent))
+        print (datospantalla)
     return datospantalla
     
