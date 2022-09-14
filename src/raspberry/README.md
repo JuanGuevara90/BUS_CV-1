@@ -25,6 +25,7 @@
 $ pip install -r requirements.txt
 ```
 #### 2. Ruta del proyecto
+#### 2. Ruta del proyecto
 ```bash
 $ cd /home/iw/tensorflow1/models/research/object_detection
 ```
@@ -35,4 +36,8 @@ $ python -m raspberry.ini ingreso
 #### 4. Comando para ejecutar en caso de salida de pasajeros
 ```bash
 $ python -m raspberry.ini salida    
+```
+#### 5. Comando para ejecutar vista
+```bash
+$ Python -m raspberry.vista.VentanaDatos 
 ```

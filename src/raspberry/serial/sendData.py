@@ -1,9 +1,10 @@
 import serial,os
 import time 
-
-
 from os.path import join, dirname
+import serial
+import os
 from dotenv import load_dotenv
+from os.path import join, dirname
 
 def sendDatabySerial(msg):
     dotenv_path = join(dirname(__file__), '.env')
@@ -16,14 +17,16 @@ def sendDatabySerial(msg):
 
 
 def arduino (mnsj):
-  arduino = serial.Serial("COM5", 9600)
+  arduino = serial.Serial("COM8", 9600)
   time.sleep(2)
   arduino.write(mnsj.encode("utf-8"))
   arduino.close()
 
+
+
 def ardrecibe():
 
-  hw_sensor = serial.Serial(port='COM4', baudrate=115200, timeout=1, write_timeout=1)
+  hw_sensor = serial.Serial(port='COM6', baudrate=115200, timeout=1, write_timeout=1)
 
   if __name__ == '__main__':
     while True:
