@@ -7,11 +7,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QTextEdit
 from PyQt5 import uic
 from raspberry.controlador import controladorDatos
-from ..utiles.getDateCurrent import getDate_Current
-from ..database.conexion import create_connection
+
 global d1, d2
-d1=0
-d2=0
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
@@ -20,9 +17,8 @@ class UI(QMainWindow):
         filename="/Users/Jessica/Desktop/BUS_CV/src/raspberry/vista/interfaz.ui"
         uic.loadUi(filename, self)
 
-        self.button = self.findChild(QtWidgets.QPushButton, 'pushButton') # Find the button
         self.agregar()
-
+        self.button = self.findChild(QtWidgets.QPushButton, 'pushButton') # Find the button
         #self.button.clicked.connect(self.ButtonApagar)
                       
         #Show the app
@@ -58,6 +54,9 @@ class UI(QMainWindow):
                 print("La raspberry Pi se apagará")
                 subprocess.call(['sudo','shutdown','now'])"""
 
+    #def OnButton(self):
+        
+            
 
 #Initialize the app
 app = QApplication(sys.argv)
