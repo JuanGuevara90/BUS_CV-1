@@ -43,7 +43,6 @@ class UI(QMainWindow):
             self.label_8.setStyleSheet("background-color: rgb(255, 24, 3);")
         
 
-
     """def ShutdownButton(self):
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
