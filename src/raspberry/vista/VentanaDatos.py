@@ -1,4 +1,6 @@
 import sys, time
+#import RPi.GPIO as GPIO
+import subprocess
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -15,31 +17,47 @@ class UI(QMainWindow):
         super(UI, self).__init__()
 
         #load the ui file
-        uic.loadUi("/Users/Jessica/Desktop/BUS_CV/src/raspberry/vista/interfaz.ui", self)
-        self.label_9.setText.connect(self.agregar)
+        filename="/Users/Jessica/Desktop/BUS_CV/src/raspberry/vista/interfaz.ui"
+        uic.loadUi(filename, self)
 
-        dato=5      
+        self.button = self.findChild(QtWidgets.QPushButton, 'pushButton') # Find the button
+        self.agregar()
+
+        #self.button.clicked.connect(self.ButtonApagar)
+                      
+        #Show the app
+        self.show()
+
+    def agregar(self):
+        datospantalla=controladorDatos()
+        d1=(datospantalla[1])
+        d2=(datospantalla[2])
+        lblpi=d1
+        lblps=d2
+        self.label_9.setText(""+str(lblpi))
+        self.label_10.setText(""+str(lblps))
+
+        #Estado del bus
+        dato=d1     
         if dato>=0 and dato<5:
             self.label_8.setStyleSheet("background-color: rgb(0, 170, 0);")
         if dato>=5 and dato<10:
             self.label_8.setStyleSheet("background-color:  rgb(255, 100, 28)")
         if dato>=10 and dato<=15:
             self.label_8.setStyleSheet("background-color: rgb(255, 24, 3);")
-                        
-        #Show the app
-        self.show()
+        
 
-    def agregar(self):
-        conn = create_connection()
-        dateCurrent = getDate_Current()
-        datospantalla=controladorDatos(conn,dateCurrent)
-        d1=(datospantalla[1])
-        d2=(datospantalla[2])
-        lblpi=str(d1)
-        lblpi=str(d2)
-        self.label_8.setText(lblpi)
-        self.label_9.setText(lblpi)
-      
+
+    """def ShutdownButton(self):
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(8,GPIO IN, pull_up_down=GPIO.PUD_UP)
+    def ButtonApagar():
+        while True:
+            if GPIO.input(8)==False:
+                print("La raspberry Pi se apagará")
+                subprocess.call(['sudo','shutdown','now'])"""
+
 
 #Initialize the app
 app = QApplication(sys.argv)

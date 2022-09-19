@@ -59,6 +59,5 @@ def controladorDatos():
         conn = create_connection()
         dateCurrent = getDate_Current()
         datospantalla=(getDatosActuales(conn,dateCurrent))
-        print (datospantalla)
     return datospantalla
     
