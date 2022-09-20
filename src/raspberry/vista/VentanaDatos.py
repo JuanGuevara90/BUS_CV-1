@@ -53,7 +53,7 @@ class UI(QMainWindow):
                 print("La raspberry Pi se apagará")
                 subprocess.call(['sudo','shutdown','now'])"""
 
-    #def OnButton(self):
+
         
             
 
