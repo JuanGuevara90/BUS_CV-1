@@ -24,4 +24,9 @@ def estado(d1):
     puerto = connection()
     dato=d1     
     if dato>=0 and dato<5:
-       puerto.write(b't4'"background-color: rgb(1664);")
+       puerto.write(b"t6.bco=GREEN"'\xFF\xFF\xFF')
+    if dato>=5 and dato<10:
+       puerto.write(b"t6.bco=64512"'\xFF\xFF\xFF')
+    if dato>=10 and dato<=15:
+       puerto.write(b"t6.bco=RED"'\xFF\xFF\xFF')
+    
