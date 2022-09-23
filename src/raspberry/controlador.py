@@ -1,4 +1,5 @@
 from .utiles.getDateCurrent import getDate_Current
+import RPi.GPIO as GPIO
 from .database.operaciones import Asientosdisponibles, existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
 from .database.conexion import create_connection,main,isSqlite3Db
 from .serial.sendData import sendDatabySerial,arduino
@@ -6,6 +7,7 @@ from .serial.sensorica import sensorica
 import os
 from dotenv import load_dotenv
 from os.path import join, dirname
+from .vista.MostrarDatos import agregar
 
 
 def controladorIngreso():
@@ -29,14 +31,12 @@ def controladorIngreso():
             ingresarRegistroPasajeros( conn , dateCurrent )
             A="Ingreso al inidio del dia"
             print(A)
-        dest=getRoutes(conn)
-    
-        print(dest)
-        Ing=getDatosActuales(conn,dateCurrent)
-        arduin=str(Ing[1])
-        sendDatabySerial(arduin)
-    
-        print(arduin)
+
+        Ing=SendData(conn,dateCurrent)
+        agregar(Ing)
+        enarduin=str(Ing[1])
+        sendDatabySerial(enarduin)
+        print(enarduin)
 
 def controladorSalida():
     if(controladorSensorSalida()):
@@ -52,12 +52,10 @@ def controladorSalida():
                     print(B)               
                 else:
                     print("Enviar al arduino ")   
-        des1=(getRoutes(conn))
-        print(des1)
-        Sal=(getDatosActuales(conn,dateCurrent))
-        salard=str(Sal[1])
-        sendDatabySerial(salard)
-        print(salard)
+            Sal=SendData(conn,dateCurrent)
+            salard=str(Sal[1])
+            sendDatabySerial(salard)
+            print(salard)
     
 
 def controladorDatos():
@@ -66,7 +64,19 @@ def controladorDatos():
         conn = create_connection()
         dateCurrent = getDate_Current()
         datospantalla=(getDatosActuales(conn,dateCurrent))
+        print(datospantalla)
     return datospantalla
+
+
+
+def SendData(conn,dateCurrent):
+    des1=(getRoutes(conn))  
+    print(des1)
+    Sal=(getDatosActuales(conn,dateCurrent))
+    salard=str(Sal[1])
+    sendDatabySerial(salard)
+    print(salard)
+    return Sal
 
 def controladorSensorIngreso():
     dotenv_path = join(dirname(__file__), '.env')

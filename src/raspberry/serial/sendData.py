@@ -17,11 +17,18 @@ def sendDatabySerial(msg):
 
 
 def arduino (mnsj):
-  arduino = serial.Serial("COM5", 9600)
+  arduino = serial.Serial("/dev/ttyACM0", 9600)
   time.sleep(2)
   arduino.write(mnsj.encode("utf-8"))
   arduino.close()
 
+def connection():
+    puerto = serial.Serial("/dev/ttyS0", baudrate = 9600, timeout = 0.2)
+    if puerto.isOpen() == False:
+        puerto.open()
+    puerto.flushInput()
+    puerto.flushOutput()
+    return puerto
 
 
 
