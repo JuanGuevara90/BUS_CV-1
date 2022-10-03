@@ -32,7 +32,7 @@ def getRoutes(conn):
 def ingresarRegistroPasajeros(conn,fechaActual):
     try:
 
-        sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','15')"
+        sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','20')"
 
         conn.execute(sql_insert)
         conn.commit()
