@@ -11,7 +11,7 @@ from .vista.MostrarDatos import agregar
 
 
 def controladorIngreso():
-    if(controladorSensorIngreso):
+    #if(controladorSensorIngreso):
         if( isSqlite3Db() ): 
             conn = create_connection()
         else:
@@ -39,7 +39,7 @@ def controladorIngreso():
         print(enarduin)
 
 def controladorSalida():
-    if(controladorSensorSalida()):
+    #if(controladorSensorSalida()):
         if( isSqlite3Db() ): 
             conn = create_connection()
             dateCurrent = getDate_Current()

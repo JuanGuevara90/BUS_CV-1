@@ -1,6 +1,5 @@
 
-#import RPi.GPIO as GPIO
-
+import os
 from raspberry.serial.sendData import connection
 
 
@@ -28,15 +27,15 @@ def agregar(datospantalla):
        puerto.write(b"t6.bco=64512"+b'\xFF\xFF\xFF')
     if dato>afnaranja and dato<=afrojo:
        puerto.write(b"t6.bco=RED"+b'\xFF\xFF\xFF')
+    if dato>=afrojo:
+        puerto.write(b'tsw b1,'+str("0").encode()+b'\xFF\xFF\xFF')
+        puerto.write(b"b1.bco=RED"+b'\xFF\xFF\xFF')
 
     
+    output= puerto.readline().hex()
+    n= int (output)
+    if (n>=0):
+        print (n)
+        os.system ("sudo shutdown now")
 
-"""def ShutdownButton(self):
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(8,GPIO IN, pull_up_down=GPIO.PUD_UP)
-    def ButtonApagar():
-        while True:
-            if GPIO.input(8)==False:
-                print("La raspberry Pi se apagará")
-                subprocess.call(['sudo','shutdown','now'])"""
+        
