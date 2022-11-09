@@ -2,12 +2,15 @@ from .utiles.getDateCurrent import getDate_Current
 import RPi.GPIO as GPIO
 from .database.operaciones import Asientosdisponibles, existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
 from .database.conexion import create_connection,main,isSqlite3Db
-from .serial.sendData import sendDatabySerial,sendDatabySerial2
+from .serial.sendData import sendDatabySerial,sendDatabySerial2,getred,sendred
 from .serial.sensorica import sensorica #sensorica2
 import os
 from dotenv import load_dotenv
 from os.path import join, dirname
 from .vista.MostrarDatos import agregar
+
+
+
 
 
 def controladorIngreso():
@@ -45,18 +48,21 @@ def controladorSalida():
             dateCurrent = getDate_Current()
             if( existeRegistrosFechaActual( conn , dateCurrent )):
                 if( validateLeft( conn , dateCurrent )):
-                    actualizarRegistroResta( conn , dateCurrent )
-                    """ Actualizar y enviar al arduino"""
-                    B="Ingreso un pasajeros"
-                
-                    print(B)               
+                    data=getred()
+                    if(data=="restar"):
+                        actualizarRegistroResta( conn , dateCurrent )
+                        """ Actualizar y enviar al arduino"""
+                        B="Ingreso un pasajeros"
+                    
+                        print(B)               
                 else:
                     print("Enviar al arduino ")   
 
         Sal=(getDatosActuales(conn,dateCurrent))
         agregar(Sal)
         salard=str(Sal[1])
-        sendDatabySerial2(salard)
+        sendred(salard)
+        #sendDatabySerial2(salard)
         print(salard)
     
 
@@ -102,3 +108,6 @@ def controladorSensorSalida():
         n=True
         return n
     GPIO.cleanup()
+
+
+
